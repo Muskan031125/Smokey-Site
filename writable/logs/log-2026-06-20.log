@@ -1,0 +1,763 @@
+ERROR - 2026-06-20 05:43:39 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(72): App\Models\ProductModel->listPublic()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->newArrivals()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(72): App\Models\ProductModel->listPublic()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->newArrivals()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-06-20 05:43:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: new-arrivals]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 APPPATH/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH/Controllers/Shop.php(72): App\Models\ProductModel->listPublic()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->newArrivals()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 05:43:39 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Blog->index()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Blog->index()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+CRITICAL - 2026-06-20 05:43:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: blog]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Blog->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 05:43:39 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Home->index()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#20 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Home->index()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 {main}
+CRITICAL - 2026-06-20 05:43:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+ 4 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+ 5 VENDORPATH/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+ 6 VENDORPATH/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+ 7 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+ 8 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+ 9 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+10 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+11 VENDORPATH/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+12 APPPATH/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+13 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Home->index()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 05:43:39 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Home->index()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#20 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Home->index()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 {main}
+CRITICAL - 2026-06-20 05:43:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+ 4 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+ 5 VENDORPATH/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+ 6 VENDORPATH/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+ 7 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+ 8 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+ 9 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+10 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+11 VENDORPATH/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+12 APPPATH/Controllers/Home.php(20): CodeIgniter\Shield\Auth->__call()
+13 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Home->index()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: category/lights]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->category()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: category/wine-glasses]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->category()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(126): App\Models\ProductModel->listPublic()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->sale()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(126): App\Models\ProductModel->listPublic()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->sale()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: sale]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 APPPATH/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH/Controllers/Shop.php(126): App\Models\ProductModel->listPublic()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->sale()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: category/centrepiece]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->category()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->category()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: category/bar-accessories]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Shop.php(149): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->category()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Wishlist.php(18): CodeIgniter\Shield\Auth->__call()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Wishlist.php(22): App\Controllers\Wishlist->uid()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Wishlist->index()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#20 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#21 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Wishlist.php(18): CodeIgniter\Shield\Auth->__call()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Wishlist.php(22): App\Controllers\Wishlist->uid()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Wishlist->index()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#20 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: wishlist]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+ 4 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+ 5 VENDORPATH/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+ 6 VENDORPATH/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+ 7 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+ 8 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+ 9 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+10 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+11 VENDORPATH/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+12 APPPATH/Controllers/Wishlist.php(18): CodeIgniter\Shield\Auth->__call()
+13 APPPATH/Controllers/Wishlist.php(22): App\Controllers\Wishlist->uid()
+14 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Wishlist->index()
+15 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+16 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+17 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+19 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Controllers/LoginController.php(33): CodeIgniter\Shield\Auth->__call()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\LoginController->loginView()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#20 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Controllers/LoginController.php(33): CodeIgniter\Shield\Auth->__call()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\LoginController->loginView()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+ 4 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+ 5 VENDORPATH/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+ 6 VENDORPATH/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+ 7 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+ 8 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+ 9 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+10 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+11 VENDORPATH/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+12 VENDORPATH/codeigniter4/shield/src/Controllers/LoginController.php(33): CodeIgniter\Shield\Auth->__call()
+13 SYSTEMPATH/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\LoginController->loginView()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Blog->index()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Blog->index()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: blog]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Models/BlogModel.php(18): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH/Controllers/Blog.php(13): App\Models\BlogModel->getPublished()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Blog->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(99): App\Models\ProductModel->listPublic()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->bestSellers()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/app/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/app/Controllers/Shop.php(99): App\Models\ProductModel->listPublic()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): App\Controllers\Shop->bestSellers()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: best-sellers]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 APPPATH/Models/ProductModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH/Controllers/Shop.php(99): App\Models\ProductModel->listPublic()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Shop->bestSellers()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-06-20 11:13:49 --> Error connecting to the database: mysqli_sql_exception: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Controllers/RegisterController.php(58): CodeIgniter\Shield\Auth->__call()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\RegisterController->registerView()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#19 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#20 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Operation not permitted in /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+#5 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+#6 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+#7 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+#8 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+#9 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+#10 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+#11 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+#12 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/shield/src/Controllers/RegisterController.php(58): CodeIgniter\Shield\Auth->__call()
+#13 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\RegisterController->registerView()
+#14 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/u504377054/domains/smokey.osob.in/public_html/vendor/codeigniter4/framework/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/u504377054/domains/smokey.osob.in/public_html/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 {main}
+CRITICAL - 2026-06-20 11:13:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Operation not permitted
+[Method: GET, Route: register]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(214): CodeIgniter\Database\BaseBuilder->get()
+ 4 VENDORPATH/codeigniter4/settings/src/Handlers/DatabaseHandler.php(56): CodeIgniter\Settings\Handlers\DatabaseHandler->hydrate()
+ 5 VENDORPATH/codeigniter4/settings/src/Settings.php(62): CodeIgniter\Settings\Handlers\DatabaseHandler->has()
+ 6 VENDORPATH/codeigniter4/settings/src/Helpers/setting_helper.php(27): CodeIgniter\Settings\Settings->get()
+ 7 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(682): setting()
+ 8 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(700): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserInfo()
+ 9 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(387): CodeIgniter\Shield\Authentication\Authenticators\Session->getSessionUserKey()
+10 VENDORPATH/codeigniter4/shield/src/Authentication/Authenticators/Session.php(371): CodeIgniter\Shield\Authentication\Authenticators\Session->checkUserState()
+11 VENDORPATH/codeigniter4/shield/src/Auth.php(189): CodeIgniter\Shield\Authentication\Authenticators\Session->loggedIn()
+12 VENDORPATH/codeigniter4/shield/src/Controllers/RegisterController.php(58): CodeIgniter\Shield\Auth->__call()
+13 SYSTEMPATH/CodeIgniter.php(951): CodeIgniter\Shield\Controllers\RegisterController->registerView()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

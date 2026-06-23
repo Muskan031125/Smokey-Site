@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Joharis — Admin Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C09A45;
+    --gold-dark: #8a6d20;
+    --gold-light: #F8F2E3;
+    --gold-mid: #EDD99A;
+    --ink: #18191F;
+    --ink2: #2E2F38;
+    --muted: #6B6C78;
+    --light: #F7F6F2;
+    --border: #E4DDD0;
+    --white: #FFFFFF;
+    --green: #1E6B3C;
+    --green-bg: #EAF4EE;
+    --red: #B0291E;
+    --red-bg: #FAECEA;
+    --amber: #7A5000;
+    --amber-bg: #FDF6E3;
+    --blue: #1A4A8A;
+    --blue-bg: #EBF1FB;
+  }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.8pt;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.65;
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    .pg-break { page-break-before: always; }
+    body { font-size: 9.4pt; }
+  }
+
+  @page { size: A4; margin: 0; }
+
+  /* ─── Mobile responsive ─── */
+  @media (max-width: 700px) {
+    body { font-size: 14px; line-height: 1.7; }
+
+    .print-bar { padding: 10px 16px; }
+    .print-bar-logo { font-size: 15px; }
+    .print-btn { padding: 7px 16px; font-size: 11px; }
+
+    .page-wrap { margin: 54px 0 40px; padding: 0; }
+
+    /* Cover */
+    .cover-inner { padding: 48px 24px 36px; }
+    .cover-title { font-size: 36pt; }
+    .cover-title-line2 { font-size: 36pt; }
+    .cover-desc { font-size: 13px; }
+    .cover-deco, .cover-deco2 { display: none; }
+
+    /* TOC */
+    .toc-page { padding: 36px 20px 32px; min-height: auto; }
+    .toc-heading { font-size: 22pt; }
+    .toc-grid { grid-template-columns: 1fr; gap: 0; }
+
+    /* Section pages — stack sidebar on top */
+    .sec-page { grid-template-columns: 1fr; min-height: auto; }
+    .sec-sidebar {
+      padding: 28px 20px 24px;
+      flex-direction: row; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .sec-sidebar::after { display: none; }
+    .sec-sidebar-num { font-size: 36pt; margin-bottom: 0; }
+    .sec-sidebar-icon { font-size: 22px; margin-bottom: 0; }
+    .sec-sidebar-title { font-size: 13pt; }
+    .sec-sidebar-sub { display: none; }
+    .sec-sidebar-rule { display: none; }
+
+    .sec-content { padding: 24px 20px 32px; }
+
+    /* Tables scroll on mobile */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 13px; }
+
+    /* Cards stack */
+    .cards { grid-template-columns: 1fr; }
+    .stat-cards { grid-template-columns: 1fr; }
+    .role-cards { grid-template-columns: 1fr; }
+    .toc-grid { grid-template-columns: 1fr; }
+
+    h3 { font-size: 16px; }
+    p, ul.bul li, .steps li { font-size: 14px; }
+    .intro-line { font-size: 14px; }
+
+    .formula { font-size: 11px; padding: 10px 12px; }
+    .url { font-size: 11px; word-break: break-all; }
+  }
+
+
+  /* ─── Print bar ─── */
+  .print-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 32px; z-index: 999;
+    font-size: 9pt; letter-spacing: 0.04em;
+  }
+  .print-bar-logo { font-family: 'Playfair Display', serif; font-size: 13pt; letter-spacing: 0.06em; color: var(--gold); }
+  .print-btn {
+    background: var(--gold); color: #fff; border: none;
+    padding: 8px 24px; font-size: 8.5pt; font-weight: 700;
+    cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .print-btn:hover { background: var(--gold-dark); }
+
+  .page-wrap { max-width: 820px; margin: 52px auto 80px; padding: 0 28px; }
+  @media print { .page-wrap { margin: 0; max-width: 100%; padding: 0; } }
+
+  /* ═══════════════════════════════════════
+     COVER
+  ═══════════════════════════════════════ */
+  .cover {
+    position: relative;
+    background: var(--ink2);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .cover-top-bar {
+    background: var(--gold);
+    height: 6px; width: 100%;
+  }
+  .cover-inner {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; padding: 72px 72px 56px;
+  }
+  .cover-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 11pt; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 40px;
+  }
+  .cover-rule { width: 64px; height: 1px; background: var(--gold); margin-bottom: 44px; opacity: 0.6; }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52pt; font-weight: 700; line-height: 1.0;
+    color: #fff; margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .cover-title-line2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52pt; font-weight: 400; font-style: italic;
+    color: var(--gold); line-height: 1.0; margin-bottom: 44px; letter-spacing: -0.01em;
+  }
+  .cover-desc {
+    font-size: 11.5pt; color: rgba(255,255,255,0.52);
+    max-width: 460px; line-height: 1.85; margin-bottom: 72px; font-weight: 300;
+  }
+  .cover-footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cover-footer-left { font-size: 8pt; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+  .cover-footer-right { font-size: 8pt; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
+  .cover-deco {
+    position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+    width: 320px; height: 320px;
+    border: 1px solid rgba(192,154,69,0.12);
+    border-radius: 50%;
+  }
+  .cover-deco2 {
+    position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+    width: 200px; height: 200px;
+    border: 1px solid rgba(192,154,69,0.08);
+    border-radius: 50%;
+  }
+
+  /* ═══════════════════════════════════════
+     TOC
+  ═══════════════════════════════════════ */
+  .toc-page {
+    padding: 64px 72px 48px;
+    page-break-after: always;
+    min-height: 90vh;
+  }
+  .toc-eyebrow {
+    font-size: 7.5pt; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; font-weight: 600;
+  }
+  .toc-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 28pt; font-weight: 700; color: var(--ink);
+    margin-bottom: 36px; line-height: 1.1;
+  }
+  .toc-heading em { font-style: italic; color: var(--gold); }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+  .toc-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+  }
+  .toc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 9pt; font-weight: 700; color: var(--gold);
+    min-width: 22px; padding-top: 2px;
+  }
+  .toc-info { flex: 1; }
+  .toc-title { font-weight: 600; font-size: 10pt; color: var(--ink); line-height: 1.3; }
+  .toc-sub-title { font-size: 8.5pt; color: var(--muted); margin-top: 2px; }
+
+  /* ═══════════════════════════════════════
+     PAGE LAYOUT (for content sections)
+  ═══════════════════════════════════════ */
+  .sec-page {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+    page-break-before: always;
+  }
+
+  /* Left sidebar */
+  .sec-sidebar {
+    background: var(--ink2);
+    padding: 56px 28px 56px 36px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .sec-sidebar::after {
+    content: '';
+    position: absolute; bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border: 1px solid rgba(192,154,69,0.15);
+    border-radius: 50%;
+  }
+  .sec-sidebar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56pt; font-weight: 700; color: rgba(192,154,69,0.2);
+    line-height: 1; margin-bottom: 16px; letter-spacing: -0.02em;
+  }
+  .sec-sidebar-icon { font-size: 26px; margin-bottom: 16px; }
+  .sec-sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14pt; font-weight: 700; color: #fff;
+    line-height: 1.3; margin-bottom: 8px;
+  }
+  .sec-sidebar-sub {
+    font-size: 7.5pt; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; letter-spacing: 0.18em; line-height: 1.7;
+  }
+  .sec-sidebar-rule { width: 32px; height: 2px; background: var(--gold); margin: 20px 0; opacity: 0.6; }
+
+  /* Right content */
+  .sec-content {
+    padding: 48px 44px 48px 40px;
+    overflow: hidden;
+  }
+
+  /* ─── Typography ─── */
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 13.5pt; font-weight: 700; color: var(--ink);
+    margin: 28px 0 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  h3:first-child { margin-top: 0; }
+  h4 {
+    font-size: 7.5pt; font-weight: 700; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.18em;
+    margin: 18px 0 8px;
+  }
+  p { margin-bottom: 10px; color: #3C3D46; font-size: 9.8pt; line-height: 1.65; }
+
+  /* ─── Info boxes ─── */
+  .box {
+    padding: 12px 15px; margin: 12px 0;
+    display: flex; gap: 11px; align-items: flex-start;
+    font-size: 9.4pt; line-height: 1.6;
+  }
+  .box-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .box-body { flex: 1; }
+  .box-body b { display: block; margin-bottom: 3px; font-size: 9.8pt; }
+  .tip  { background: var(--amber-bg); border-left: 3px solid var(--gold); color: var(--amber); }
+  .warn { background: var(--red-bg);   border-left: 3px solid var(--red);  color: var(--red); }
+  .info { background: var(--blue-bg);  border-left: 3px solid var(--blue); color: var(--blue); }
+  .good { background: var(--green-bg); border-left: 3px solid var(--green);color: var(--green); }
+
+  /* ─── Steps ─── */
+  .steps { list-style: none; margin: 12px 0 16px; }
+  .steps li {
+    display: flex; gap: 13px; align-items: flex-start;
+    margin-bottom: 10px; font-size: 9.8pt; color: #3C3D46;
+  }
+  .step-num {
+    background: var(--gold); color: #fff;
+    font-weight: 700; font-size: 8pt;
+    min-width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px; font-family: 'Inter', sans-serif;
+  }
+
+  /* ─── Tables ─── */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 9.4pt; }
+  thead tr { background: var(--ink); }
+  th {
+    color: #fff; text-align: left; padding: 8px 11px;
+    font-size: 8pt; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  td { padding: 8px 11px; border-bottom: 1px solid var(--border); vertical-align: top; color: #3C3D46; }
+  tr:nth-child(even) td { background: var(--light); }
+  td strong { color: var(--ink); font-weight: 600; }
+  td code { font-family: 'Courier New', monospace; background: #F0EDE8; color: #5a3a00; padding: 1px 5px; font-size: 8.5pt; border-radius: 2px; }
+
+  /* ─── Badges ─── */
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 20px;
+    font-size: 7.5pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .b-gold  { background: var(--gold-light); color: var(--gold-dark); border: 1px solid var(--gold-mid); }
+  .b-green { background: var(--green-bg); color: var(--green); border: 1px solid #81C784; }
+  .b-red   { background: var(--red-bg);   color: var(--red);   border: 1px solid #EF9A9A; }
+
+  /* ─── URL pill ─── */
+  .url {
+    font-family: 'Courier New', monospace; background: #F0EDE8;
+    color: #5a3a00; padding: 2px 7px; font-size: 8.5pt; border-radius: 2px;
+  }
+
+  /* ─── Role cards ─── */
+  .role-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 12px 0 18px; }
+  .role-card { border-radius: 1px; overflow: hidden; border: 1px solid var(--border); }
+  .role-head { padding: 11px 13px; font-weight: 700; font-size: 9.8pt; display: flex; align-items: center; gap: 7px; }
+  .role-body { padding: 11px 13px; font-size: 9pt; color: #3C3D46; line-height: 1.6; background: var(--light); }
+  .r-super .role-head { background: var(--ink); color: var(--gold); }
+  .r-inv   .role-head { background: #2D3F5A; color: #A8C5E8; }
+  .r-view  .role-head { background: #4A4B54; color: #C8C8D0; }
+
+  /* ─── Cards ─── */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 18px; }
+  .card {
+    background: var(--light); border: 1px solid var(--border);
+    padding: 16px 15px;
+  }
+  .card-icon { font-size: 22px; margin-bottom: 7px; }
+  .card-title { font-weight: 700; color: var(--ink); font-size: 10.5pt; margin-bottom: 5px; }
+  .card-body { font-size: 9pt; color: var(--muted); line-height: 1.6; }
+
+  /* ─── Stat cards (dashboard) ─── */
+  .stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 18px; }
+  .stat-card {
+    border: 1px solid var(--border); padding: 14px 15px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .stat-icon {
+    width: 38px; height: 38px; background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .stat-label { font-weight: 600; font-size: 9.8pt; color: var(--ink); }
+  .stat-desc { font-size: 8.5pt; color: var(--muted); margin-top: 2px; }
+
+  /* ─── Formula ─── */
+  .formula {
+    background: var(--ink); color: var(--gold);
+    padding: 12px 18px; font-family: 'Courier New', monospace;
+    font-size: 9pt; text-align: center; margin: 12px 0 16px;
+    letter-spacing: 0.02em; line-height: 1.8;
+  }
+
+  /* ─── Bullet list ─── */
+  ul.bul { padding-left: 18px; margin: 8px 0 14px; }
+  ul.bul li { margin-bottom: 5px; font-size: 9.8pt; color: #3C3D46; }
+
+  /* ─── Section intro line ─── */
+  .intro-line {
+    font-size: 10.5pt; color: var(--muted); margin-bottom: 20px;
+    padding-bottom: 16px; border-bottom: 2px solid var(--gold-light);
+    font-weight: 300; line-height: 1.7;
+  }
+  .intro-line strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── Footer ─── */
+  .doc-footer {
+    margin-top: 48px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 7.8pt; color: var(--muted); text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  hr.div { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+</style>
+</head>
+<body>
+
+<!-- ─── Print bar ─── -->
+<div class="print-bar no-print">
+  <div class="print-bar-logo">The Joharis</div>
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
+</div>
+
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════ COVER ═══════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top-bar"></div>
+  <div class="cover-deco"></div>
+  <div class="cover-deco2"></div>
+  <div class="cover-inner">
+    <div class="cover-brand">The Joharis &nbsp;·&nbsp; Digital Catalogue</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">Admin</div>
+    <div class="cover-title-line2">User Guide</div>
+    <div class="cover-desc">A complete guide to managing your jewellery catalogue — adding products, uploading photos, approving clients, updating prices, and more.</div>
+    <div class="cover-footer">
+      <div class="cover-footer-left">thejoharis.com</div>
+      <div class="cover-footer-right">Version 1.0 &nbsp;·&nbsp; May 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ TOC ═══════════════════════════════════ -->
+<div class="toc-page">
+  <div class="toc-eyebrow">Table of Contents</div>
+  <div class="toc-heading">What's <em>Inside</em></div>
+  <div class="toc-grid">
+    <div>
+      <div class="toc-item">
+        <div class="toc-num">01</div>
+        <div class="toc-info"><div class="toc-title">Logging In &amp; Your Role</div><div class="toc-sub-title">Access · Roles · Permissions</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">02</div>
+        <div class="toc-info"><div class="toc-title">The Dashboard</div><div class="toc-sub-title">Overview &amp; Activity</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">03</div>
+        <div class="toc-info"><div class="toc-title">Managing Products</div><div class="toc-sub-title">Add · Edit · Photos · Stock</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">04</div>
+        <div class="toc-info"><div class="toc-title">Categories</div><div class="toc-sub-title">Collections Management</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">05</div>
+        <div class="toc-info"><div class="toc-title">Bulk Import</div><div class="toc-sub-title">Excel · Photos · Backups</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">06</div>
+        <div class="toc-info"><div class="toc-title">Export as PDF</div><div class="toc-sub-title">Generate Catalogue PDF</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="toc-item">
+        <div class="toc-num">07</div>
+        <div class="toc-info"><div class="toc-title">Access Requests</div><div class="toc-sub-title">Approve New Clients</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">08</div>
+        <div class="toc-info"><div class="toc-title">Managing Clients</div><div class="toc-sub-title">View · Control · Monitor</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">09</div>
+        <div class="toc-info"><div class="toc-title">Admin Staff Accounts</div><div class="toc-sub-title">Create &amp; Manage Users</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">10</div>
+        <div class="toc-info"><div class="toc-title">Settings &amp; Gold Rate</div><div class="toc-sub-title">Brand · Pricing · Regional</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">11</div>
+        <div class="toc-info"><div class="toc-title">Home Page Content</div><div class="toc-sub-title">Edit Public Website</div></div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">12</div>
+        <div class="toc-info"><div class="toc-title">Quick Reference</div><div class="toc-sub-title">URLs · Purity · Tag Prefixes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 01 LOGIN ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">01</div>
+    <div class="sec-sidebar-icon">🔑</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Logging In &amp; Your Role</div>
+    <div class="sec-sidebar-sub">Access<br>Roles<br>Permissions</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Everything starts here. Log in with your email and password, and your role determines what you can see and do across the entire admin panel.</p>
+
+    <h3>How to Log In</h3>
+    <p>Open your browser and go to <span class="url">https://thejoharis.com/login</span></p>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Enter your <strong>email address</strong> and <strong>password</strong>.</li>
+      <li><span class="step-num">2</span>Click <strong>Sign In</strong>. You will land on the Dashboard.</li>
+      <li><span class="step-num">3</span>To log out, click your name in the top-right corner and choose <strong>Log Out</strong>.</li>
+    </ul>
+    <div class="box tip"><span class="box-icon">💡</span><div class="box-body"><b>First login?</b> You may be prompted to set a new password. Use at least 8 characters. Always log out when finished, especially on shared computers.</div></div>
+
+    <h3>Your Role</h3>
+    <p>Every admin is assigned one of three roles. Your role controls what actions you can take.</p>
+    <div class="role-cards">
+      <div class="role-card r-super">
+        <div class="role-head">⭐ Super Admin</div>
+        <div class="role-body">Full access to everything — products, categories, clients, staff, settings, gold rate, bulk import, PDF export, home page, and client approvals.</div>
+      </div>
+      <div class="role-card r-inv">
+        <div class="role-head">📦 Inventory Manager</div>
+        <div class="role-body">Can add and edit products, categories, bulk import, export PDFs, and view clients. Cannot manage staff or change system settings.</div>
+      </div>
+      <div class="role-card r-view">
+        <div class="role-head">👁 Viewer</div>
+        <div class="role-body">Read-only access. Can browse all inventory and the dashboard but cannot create, edit, or delete anything.</div>
+      </div>
+    </div>
+    <div class="box warn"><span class="box-icon">⚠️</span><div class="box-body"><b>Super Admin only:</b> Approving client requests, managing staff accounts, and updating the gold rate all require Super Admin access.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 02 DASHBOARD ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">02</div>
+    <div class="sec-sidebar-icon">📊</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">The Dashboard</div>
+    <div class="sec-sidebar-sub">Overview<br>Live Stats<br>Activity</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">The dashboard is the first screen after login. It gives you a real-time snapshot of your catalogue, pending tasks, and recent admin activity.</p>
+
+    <h3>Overview Cards</h3>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="stat-icon">💎</div><div><div class="stat-label">Active SKUs</div><div class="stat-desc">Total products, with in-stock and out-of-stock counts.</div></div></div>
+      <div class="stat-card"><div class="stat-icon">📁</div><div><div class="stat-label">Collections</div><div class="stat-desc">Number of active jewellery categories on the portal.</div></div></div>
+      <div class="stat-card"><div class="stat-icon">🔔</div><div><div class="stat-label">Pending Requests</div><div class="stat-desc">New clients waiting for approval. Click to review.</div></div></div>
+      <div class="stat-card"><div class="stat-icon">₹</div><div><div class="stat-label">Gold Rate</div><div class="stat-desc">Current rate per gram (24K). Drives all live product prices.</div></div></div>
+    </div>
+
+    <h3>Recent Activity</h3>
+    <p>The bottom of the dashboard shows the last 10 actions taken by any admin user — who did what, and when. This is your audit trail for all changes made in the system.</p>
+
+    <h3>Quick Actions</h3>
+    <p>Depending on your role, shortcut buttons appear for the most common tasks: <strong>Add SKU</strong>, <strong>Add Category</strong>, and <strong>Update Gold Rate</strong>.</p>
+
+    <div class="box info"><span class="box-icon">ℹ️</span><div class="box-body"><b>Gold rate alert:</b> If the rate shown on the dashboard looks outdated, a Super Admin should update it in Settings before clients view prices.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 03 PRODUCTS ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">03</div>
+    <div class="sec-sidebar-icon">💎</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Managing Products</div>
+    <div class="sec-sidebar-sub">Add SKUs<br>Edit Details<br>Upload Photos<br>Stock Status</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Products are individual jewellery items in your catalogue. Each product has a unique Tag No and belongs to one collection.</p>
+
+    <h3>Product List</h3>
+    <p>Go to <span class="url">/admin/products</span> to see all SKUs. Search by tag number, filter by collection, or sort by date.</p>
+    <table>
+      <thead><tr><th>Column</th><th>What it shows</th></tr></thead>
+      <tr><td><strong>Cover</strong></td><td>Thumbnail of the product's main photo.</td></tr>
+      <tr><td><strong>Tag No</strong></td><td>Unique product code, e.g. BR220, ER109. Click to view details.</td></tr>
+      <tr><td><strong>Collection</strong></td><td>The jewellery category this product belongs to.</td></tr>
+      <tr><td><strong>Weight</strong></td><td>Gross weight and net (gold) weight in grams.</td></tr>
+      <tr><td><strong>Stock</strong></td><td><span class="badge b-green">In Stock</span> or <span class="badge b-red">Out of Stock</span></td></tr>
+      <tr><td><strong>Live Total</strong></td><td>Auto-calculated price using today's gold rate.</td></tr>
+    </table>
+
+    <h3>Adding a New Product</h3>
+    <p>Click <strong>+ New SKU</strong> (top right). Fill in the form:</p>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Enter the <strong>Tag No</strong> — must be unique across the entire catalogue.</li>
+      <li><span class="step-num">2</span>Select a <strong>Category</strong> from the dropdown.</li>
+      <li><span class="step-num">3</span>Enter gross weight, purity, net weight, and labour charge.</li>
+      <li><span class="step-num">4</span>Add diamonds or stones if applicable (see below).</li>
+      <li><span class="step-num">5</span>Tick <strong>In Stock</strong> if the item is available to clients.</li>
+      <li><span class="step-num">6</span>Click <strong>Save SKU</strong>.</li>
+    </ul>
+
+    <h4>Weight &amp; Purity Fields</h4>
+    <table>
+      <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+      <tr><td><strong>Gross Weight</strong></td><td>Total weight including all stones, in grams.</td></tr>
+      <tr><td><strong>Purity</strong></td><td>As a decimal — <code>0.75</code> for 18K, <code>0.916</code> for 22K, <code>0.99</code> for 24K.</td></tr>
+      <tr><td><strong>Net Weight</strong></td><td>Gold weight only (no stones), in grams. Used for price calculation.</td></tr>
+      <tr><td><strong>Labour</strong></td><td>Making/labour charge in ₹.</td></tr>
+      <tr><td><strong>Colour</strong></td><td>Yellow, White, Rose, or Two-Tone.</td></tr>
+    </table>
+
+    <div class="box info"><span class="box-icon">ℹ️</span><div class="box-body"><b>Price is calculated automatically:</b>
+      <div class="formula">Total = (Net Weight × Gold Rate × Purity) + Labour + Diamonds + Stones</div>
+      You never need to enter a price manually — it updates in real time with the gold rate.
+    </div></div>
+
+    <h3>Diamonds &amp; Stones</h3>
+    <p><strong>Diamonds:</strong> Click <strong>+ Add Diamond</strong> for each group (up to 3). Enter number of pieces, total carat weight, and rate per carat. Optionally add shape, colour grade, and clarity grade.</p>
+    <p><strong>Stones:</strong> Click <strong>+ Add Stone</strong> for rubies, emeralds, etc. (up to 2). Enter name, weight, rate, and number of pieces.</p>
+
+    <h3>Uploading Product Photos</h3>
+    <p>After saving a product, click <strong>Manage Media</strong> to add photos.</p>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Drag and drop images or click to browse. Select multiple at once. Formats: JPG, PNG, WEBP.</li>
+      <li><span class="step-num">2</span>The first image uploaded becomes the cover photo automatically.</li>
+      <li><span class="step-num">3</span>To change the cover, click the ⭐ icon on any image.</li>
+      <li><span class="step-num">4</span>Drag images to reorder. Click 🗑 to delete.</li>
+      <li><span class="step-num">5</span>To add a Vimeo video, paste the URL and click <strong>Add Video</strong>.</li>
+    </ul>
+
+    <h3>Toggling Stock Status</h3>
+    <p>In the product list, click <strong>Toggle Stock</strong> to instantly switch a product between In Stock and Out of Stock. Out-of-stock items remain visible with a red badge.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 04 CATEGORIES ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">04</div>
+    <div class="sec-sidebar-icon">📁</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Categories</div>
+    <div class="sec-sidebar-sub">Collections<br>Cover Images<br>Sort Order</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Categories are the jewellery collections shown on the portal — Bracelets, Earrings, Rings, Pendants, etc. Every product belongs to exactly one category.</p>
+
+    <h3>Creating a Category</h3>
+    <p>Go to <span class="url">/admin/categories</span> → click <strong>+ New Category</strong>.</p>
+    <table>
+      <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+      <tr><td><strong>Name</strong> ✱</td><td>The collection name as clients will see it. E.g. "Bracelet", "Ladies Ring". Required.</td></tr>
+      <tr><td><strong>Slug</strong></td><td>Auto-filled from the name. No need to change unless you want a custom URL.</td></tr>
+      <tr><td><strong>Description</strong></td><td>Optional short description shown at the top of the collection page.</td></tr>
+      <tr><td><strong>Sort Order</strong></td><td>Controls the display order on the portal. Lower = higher up. Use 10, 20, 30… for easy reordering.</td></tr>
+      <tr><td><strong>Cover Image</strong></td><td>Upload a photo or paste an image URL. Shown as the collection thumbnail on the home page.</td></tr>
+    </table>
+
+    <h3>Hiding a Category</h3>
+    <p>Click <strong>Toggle</strong> in the category list to hide a collection from clients without deleting it. All products in a hidden category also become hidden. You can re-enable it at any time.</p>
+
+    <div class="box tip"><span class="box-icon">💡</span><div class="box-body"><b>Product count updates automatically.</b> The number shown next to each category reflects the live count of products assigned to it.</div></div>
+
+    <h3>Editing a Category</h3>
+    <p>Click the category name to open the edit form. You can update the name, description, sort order, and cover image at any time. Changes take effect immediately.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 05 BULK IMPORT ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">05</div>
+    <div class="sec-sidebar-icon">📤</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Bulk Import</div>
+    <div class="sec-sidebar-sub">Excel Upload<br>Photos ZIP<br>Photos Only<br>Backups</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Bulk Import lets you add hundreds of SKUs at once from an Excel file, with product photos in a ZIP — instead of entering each product manually.</p>
+    <p>Go to <span class="url">/admin/bulk-import</span> and select a mode:</p>
+
+    <div class="cards">
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">Excel + Photos</div><div class="card-body">Upload an Excel file to create or update SKUs. Optionally include a ZIP of product photos.</div></div>
+      <div class="card"><div class="card-icon">🖼</div><div class="card-title">Photos Only</div><div class="card-body">Attach photos to products already in the system. No Excel needed — just the ZIP file.</div></div>
+    </div>
+
+    <hr class="div">
+    <h3>Mode 1 — Excel + Photos</h3>
+    <h4>Step 1 — Download &amp; fill the template</h4>
+    <p>Click <strong>↓ Download Template</strong>. Fill in one row per product. The template includes an Instructions sheet with full column details.</p>
+    <table>
+      <thead><tr><th>Column</th><th>Field</th><th>Notes</th></tr></thead>
+      <tr><td>A</td><td><strong>Tag No</strong> ✱</td><td>Unique product code. Required.</td></tr>
+      <tr><td>C</td><td>Gross Weight</td><td>Total weight in grams.</td></tr>
+      <tr><td>D</td><td>Purity %</td><td>Enter 75 for 18K, 91.6 for 22K, 99 for 24K.</td></tr>
+      <tr><td>O</td><td>Net Weight</td><td>Gold weight only, in grams.</td></tr>
+      <tr><td>P</td><td>Labour</td><td>Making charge in ₹.</td></tr>
+      <tr><td>AK</td><td>In Stock</td><td>1 = In Stock, 0 = Out of Stock.</td></tr>
+      <tr><td>AM</td><td><strong>Category</strong> ✱</td><td>Must exactly match a category name in the system.</td></tr>
+    </table>
+
+    <div class="box tip"><span class="box-icon">💡</span><div class="box-body"><b>Category auto-detection:</b> Leave the Category column blank and the system will guess from the tag prefix — BR → Bracelet, ER → Earrings, LR → Ladies Ring. See the full prefix list in Section 12.</div></div>
+
+    <h4>Step 2 — Prepare photos ZIP (optional)</h4>
+    <p>Name each image after its Tag No and put them all in one ZIP:</p>
+    <table>
+      <thead><tr><th>Filename</th><th>Result</th></tr></thead>
+      <tr><td><code>BR220.jpg</code></td><td>Cover photo for SKU BR220</td></tr>
+      <tr><td><code>BR220-002.jpg</code></td><td>Second photo for BR220</td></tr>
+      <tr><td><code>ER109.jpg</code></td><td>Cover photo for SKU ER109</td></tr>
+    </table>
+    <p>Images can be inside sub-folders in the ZIP. Supported formats: JPG, PNG, WEBP.</p>
+
+    <h4>Step 3 — Upload, preview &amp; confirm</h4>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Upload the Excel file in zone 1. Upload the photos ZIP in zone 2 (optional).</li>
+      <li><span class="step-num">2</span>Tick <strong>Override existing SKUs</strong> only if you want to update products already in the system.</li>
+      <li><span class="step-num">3</span>Click <strong>Preview Data →</strong> and review the results table.</li>
+      <li><span class="step-num">4</span>Click <strong>Confirm Import</strong> to complete.</li>
+    </ul>
+
+    <div class="box good"><span class="box-icon">✅</span><div class="box-body"><b>Automatic backup:</b> The system saves a backup of your data before every import. You can restore from the Backups page if anything goes wrong.</div></div>
+
+    <hr class="div">
+    <h3>Mode 2 — Photos Only</h3>
+    <p>Select <strong>Photos Only</strong> from the dropdown. Upload your ZIP file (named by Tag No). Click <strong>Upload Photos</strong>. The system matches each image to the correct existing product automatically.</p>
+
+    <h3>Backups &amp; Restore</h3>
+    <p>Click <strong>View Backups</strong> to see all pre-import snapshots with their date and size. Click <strong>Restore</strong> to roll back to a previous state.</p>
+    <div class="box warn"><span class="box-icon">⚠️</span><div class="box-body"><b>Restore overwrites current data.</b> Only use this to undo a bulk import that produced incorrect results. This action cannot be undone.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 06 EXPORT PDF ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">06</div>
+    <div class="sec-sidebar-icon">📄</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Export as PDF</div>
+    <div class="sec-sidebar-sub">Catalogue PDF<br>Filter by Category<br>Share with Clients</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Generate a professionally formatted PDF of your catalogue to share with clients by email or WhatsApp.</p>
+    <p>Go to <span class="url">/admin/export-pdf</span>.</p>
+
+    <h3>Export Options</h3>
+    <table>
+      <thead><tr><th>Option</th><th>Description</th></tr></thead>
+      <tr><td><strong>Select Collections</strong></td><td>Choose which categories to include. Leave all unticked to export the full catalogue.</td></tr>
+      <tr><td><strong>Layout</strong></td><td>2 products per page (compact) or 1 product per page (detailed, with full specifications).</td></tr>
+      <tr><td><strong>Stock Filter</strong></td><td>Export all items, in-stock only, or out-of-stock only.</td></tr>
+    </table>
+
+    <p>Click <strong>Generate &amp; Download PDF</strong>. The PDF includes product photos, all specifications, diamond and stone details, and the live calculated price at the current gold rate.</p>
+
+    <div class="box tip"><span class="box-icon">💡</span><div class="box-body"><b>Always update the gold rate first.</b> Before sending a PDF to a client, check that Settings shows today's correct gold rate — prices in the PDF are calculated at the moment of generation.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 07 ACCESS REQUESTS ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">07</div>
+    <div class="sec-sidebar-icon">✅</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Access Requests</div>
+    <div class="sec-sidebar-sub">Approve<br>Reject<br>Review History</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">When a new client submits an access request on the website, it appears here for review before they are granted access to the catalogue.</p>
+    <p>Go to <span class="url">/admin/access-requests</span>. Each request displays the client's name, email, phone, company, business type, address, and GST number.</p>
+
+    <h3>Approving a Request</h3>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Review the applicant's details carefully.</li>
+      <li><span class="step-num">2</span>Click <strong>Approve</strong>.</li>
+      <li><span class="step-num">3</span>The system automatically creates a login account for the client.</li>
+      <li><span class="step-num">4</span>A welcome email with login credentials is sent to the client automatically.</li>
+      <li><span class="step-num">5</span>The client will be asked to set a new password on their first login.</li>
+    </ul>
+
+    <h3>Rejecting a Request</h3>
+    <p>Click <strong>Reject</strong> to decline. The request is logged with your name and timestamp. The applicant does not receive an automatic notification — contact them separately if needed.</p>
+
+    <div class="box info"><span class="box-icon">ℹ️</span><div class="box-body">The last 20 reviewed requests are shown below the pending list so you can refer back to recent decisions.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 08 CLIENTS ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">08</div>
+    <div class="sec-sidebar-icon">👥</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Managing Clients</div>
+    <div class="sec-sidebar-sub">View Accounts<br>Control Access<br>Activity Logs</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">View and manage all approved client accounts. Monitor what clients are browsing and control their access at any time.</p>
+    <p>Go to <span class="url">/admin/clients</span>. The list shows each client's name, company, last active date, and status.</p>
+
+    <h3>Client Actions</h3>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th></tr></thead>
+      <tr><td><strong>Enable / Disable</strong></td><td>Immediately grants or removes catalogue access. The client sees a "not authorised" message when disabled.</td></tr>
+      <tr><td><strong>Reset Password</strong></td><td>Generates a new temporary password. Shown to you to share with the client. They must change it on next login.</td></tr>
+      <tr><td><strong>Set Expiry Date</strong></td><td>Restrict access to a specific end date. After that date the client cannot log in.</td></tr>
+      <tr><td><strong>Clear Activity</strong></td><td>Deletes the client's browsing history. Their account stays active.</td></tr>
+    </table>
+
+    <h3>Activity Log</h3>
+    <p>Click any client's name to open their profile. The activity log shows every page they have visited — which products and collections, when, and from which device. This helps you understand what your clients are most interested in.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 09 STAFF ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">09</div>
+    <div class="sec-sidebar-icon">🧑‍💼</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Admin Staff</div>
+    <div class="sec-sidebar-sub">Create Users<br>Assign Roles<br>Manage Access</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Manage all admin user accounts — create new staff, assign roles, reset passwords, and disable access when needed.</p>
+    <p>Go to <span class="url">/admin/staff</span>. Only <strong>Super Admins</strong> can access this section.</p>
+
+    <h3>Adding a New Staff Member</h3>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Click <strong>+ New Internal User</strong>.</li>
+      <li><span class="step-num">2</span>Enter their <strong>full name</strong>, <strong>email address</strong>, and a temporary <strong>password</strong> (minimum 8 characters).</li>
+      <li><span class="step-num">3</span>Select their <strong>role</strong>: Super Admin, Inventory Manager, or Viewer.</li>
+      <li><span class="step-num">4</span>Click <strong>Create User</strong>. They can now log in immediately.</li>
+    </ul>
+
+    <h3>Managing Existing Staff</h3>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th></tr></thead>
+      <tr><td><strong>Change Role</strong></td><td>Select a new role and save. Takes effect immediately.</td></tr>
+      <tr><td><strong>Reset Password</strong></td><td>Generate a new temporary password. The staff member must change it on next login.</td></tr>
+      <tr><td><strong>Enable / Disable</strong></td><td>Remove or restore admin access without deleting the account.</td></tr>
+    </table>
+
+    <div class="box warn"><span class="box-icon">⚠️</span><div class="box-body"><b>Super Admin access is powerful.</b> Only assign the Super Admin role to people who genuinely need full control — they can change settings, approve clients, and manage all data.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 10 SETTINGS ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">10</div>
+    <div class="sec-sidebar-icon">⚙️</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Settings &amp; Gold Rate</div>
+    <div class="sec-sidebar-sub">Brand<br>Gold Rate<br>Regional</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Configure your brand details, update the gold rate, and set regional preferences. Only Super Admins can access Settings.</p>
+    <p>Go to <span class="url">/admin/settings</span>.</p>
+
+    <h3>Brand Settings</h3>
+    <table>
+      <thead><tr><th>Setting</th><th>What it controls</th></tr></thead>
+      <tr><td><strong>Brand Name</strong></td><td>Displayed in the portal header and in all emails sent to clients.</td></tr>
+      <tr><td><strong>Contact Email</strong></td><td>Email address shown in welcome emails sent to new clients.</td></tr>
+      <tr><td><strong>Tagline</strong></td><td>Short description shown on the portal home page.</td></tr>
+    </table>
+
+    <h3>Gold Rate <span class="badge b-red">Critical</span></h3>
+    <p>The gold rate (₹ per gram, 24K) drives every product's live price. Update this regularly — ideally daily — to keep prices accurate for clients.</p>
+    <div class="box warn"><span class="box-icon">⚠️</span><div class="box-body"><b>All prices update the moment you save.</b> There is no confirmation step. Double-check the value before clicking Save — an incorrect rate affects every product price instantly.</div></div>
+
+    <h3>Regional Settings</h3>
+    <table>
+      <thead><tr><th>Setting</th><th>Notes</th></tr></thead>
+      <tr><td><strong>Region</strong></td><td>India, US, EU, UK, UAE, or Singapore.</td></tr>
+      <tr><td><strong>Timezone</strong></td><td>Affects all timestamps throughout the admin panel.</td></tr>
+      <tr><td><strong>Currency</strong></td><td>INR, USD, GBP, EUR, AED, or SGD. Symbol and decimals auto-fill.</td></tr>
+      <tr><td><strong>Date / Time Format</strong></td><td>Choose your preferred display style. A live preview is shown on the page.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 11 HOME PAGE ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">11</div>
+    <div class="sec-sidebar-icon">🏠</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Home Page Content</div>
+    <div class="sec-sidebar-sub">Hero Banner<br>Collections<br>Stats &amp; CTA</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">Edit all text and images on the public-facing home page. Changes go live immediately after saving.</p>
+    <p>Go to <span class="url">/admin/home-page</span>.</p>
+
+    <h3>Editable Sections</h3>
+    <table>
+      <thead><tr><th>Section</th><th>What you can change</th></tr></thead>
+      <tr><td><strong>Hero Banner</strong></td><td>Background photo, headline (3 lines including italic accent word), subtext, and CTA button labels.</td></tr>
+      <tr><td><strong>Values Strip</strong></td><td>4 cards below the hero — each has a title and subtitle. E.g. "Handcrafted · Since 1984".</td></tr>
+      <tr><td><strong>Collections Intro</strong></td><td>Eyebrow text, section title, and subtitle above the collections grid. Collection images come automatically from each category's cover photo.</td></tr>
+      <tr><td><strong>Quote Banner</strong></td><td>Background image, the quote text, and the attribution line.</td></tr>
+      <tr><td><strong>Our Craft</strong></td><td>Background image, two floating side images, headline, and a paragraph of body text.</td></tr>
+      <tr><td><strong>Stats Strip</strong></td><td>Background image and 4 stat blocks — each has a number and a label.</td></tr>
+      <tr><td><strong>Footer CTA</strong></td><td>The final section above the footer — edit the title and body text.</td></tr>
+    </table>
+
+    <div class="box tip"><span class="box-icon">💡</span><div class="box-body"><b>Images:</b> Upload a photo from your computer, or paste an external image URL. Click <strong>Preview</strong> to see the live public page before saving your changes.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ 12 QUICK REFERENCE ═══════════════════════════════════ -->
+<div class="sec-page">
+  <div class="sec-sidebar">
+    <div class="sec-sidebar-num">12</div>
+    <div class="sec-sidebar-icon">⚡</div>
+    <div class="sec-sidebar-rule"></div>
+    <div class="sec-sidebar-title">Quick Reference</div>
+    <div class="sec-sidebar-sub">All URLs<br>Purity Chart<br>Tag Prefixes</div>
+  </div>
+  <div class="sec-content">
+    <p class="intro-line">A handy one-page reference for the most commonly needed information.</p>
+
+    <h3>Admin URLs</h3>
+    <table>
+      <thead><tr><th>Page</th><th>Address</th></tr></thead>
+      <tr><td>Login</td><td><span class="url">thejoharis.com/login</span></td></tr>
+      <tr><td>Dashboard</td><td><span class="url">thejoharis.com/admin</span></td></tr>
+      <tr><td>Products</td><td><span class="url">thejoharis.com/admin/products</span></td></tr>
+      <tr><td>Add New SKU</td><td><span class="url">thejoharis.com/admin/products/create</span></td></tr>
+      <tr><td>Categories</td><td><span class="url">thejoharis.com/admin/categories</span></td></tr>
+      <tr><td>Bulk Import</td><td><span class="url">thejoharis.com/admin/bulk-import</span></td></tr>
+      <tr><td>Export PDF</td><td><span class="url">thejoharis.com/admin/export-pdf</span></td></tr>
+      <tr><td>Access Requests</td><td><span class="url">thejoharis.com/admin/access-requests</span></td></tr>
+      <tr><td>Clients</td><td><span class="url">thejoharis.com/admin/clients</span></td></tr>
+      <tr><td>Staff Accounts</td><td><span class="url">thejoharis.com/admin/staff</span></td></tr>
+      <tr><td>Settings &amp; Gold Rate</td><td><span class="url">thejoharis.com/admin/settings</span></td></tr>
+      <tr><td>Home Page CMS</td><td><span class="url">thejoharis.com/admin/home-page</span></td></tr>
+    </table>
+
+    <h3>Purity Reference</h3>
+    <table>
+      <thead><tr><th>Enter in Excel</th><th>Karat</th><th>System value</th></tr></thead>
+      <tr><td><strong>99</strong></td><td>24K — Pure Gold</td><td>0.99</td></tr>
+      <tr><td><strong>91.6</strong></td><td>22K</td><td>0.916</td></tr>
+      <tr><td><strong>75</strong></td><td>18K</td><td>0.75</td></tr>
+      <tr><td><strong>60</strong></td><td>14K</td><td>0.60</td></tr>
+    </table>
+
+    <h3>Tag Prefix → Collection</h3>
+    <table>
+      <thead><tr><th>Prefix</th><th>Collection</th><th>Prefix</th><th>Collection</th></tr></thead>
+      <tr><td><strong>BL</strong></td><td>Bangle</td><td><strong>LR</strong></td><td>Ladies Ring</td></tr>
+      <tr><td><strong>BR</strong></td><td>Bracelet</td><td><strong>PC</strong></td><td>Pendant Chain</td></tr>
+      <tr><td><strong>CL</strong></td><td>Cuff Links</td><td><strong>PD</strong></td><td>Pendant</td></tr>
+      <tr><td><strong>DC</strong></td><td>Diamond Chain</td><td><strong>PDC</strong></td><td>Pendant with Chain</td></tr>
+      <tr><td><strong>ER</strong></td><td>Earrings</td><td><strong>SR</strong></td><td>Solitaire Ring</td></tr>
+      <tr><td><strong>GR</strong></td><td>Gents Ring</td><td><strong>ST</strong></td><td>Solitaire Earrings</td></tr>
+      <tr><td><strong>LP</strong></td><td>Lapel Pin</td><td><strong>STR</strong></td><td>String</td></tr>
+      <tr><td><strong>TK</strong></td><td>Teeka</td><td></td><td></td></tr>
+    </table>
+
+    <div class="doc-footer">
+      The Joharis — Admin User Guide &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; May 2026
+    </div>
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+</body>
+</html>

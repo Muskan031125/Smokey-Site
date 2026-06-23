@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière — Fine Jewelry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ink: '#1a1a1a',
+            cream: '#f8f5f0',
+            gold: '#b8935a',
+            'gold-dark': '#8f6f3d',
+            muted: '#6b6b6b',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #f8f5f0; overflow-x: hidden; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    .divider { width: 40px; height: 1px; background: #b8935a; display: inline-block; vertical-align: middle; }
+    /* ---------- Reveal animations ---------- */
+    .reveal { opacity: 0; transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); will-change: transform, opacity; }
+    .reveal-up       { transform: translateY(80px); }
+    .reveal-down     { transform: translateY(-80px); }
+    .reveal-left     { transform: translateX(-140px); }
+    .reveal-right    { transform: translateX(140px); }
+    .reveal-scale    { transform: scale(.8); }
+    .reveal-rotate   { transform: rotate(-8deg) translateY(60px); }
+    .reveal-blur     { filter: blur(12px); transform: translateY(40px); transition: opacity 1s ease, transform 1s ease, filter 1.2s ease; }
+    .reveal-clip     { clip-path: inset(0 100% 0 0); opacity: 1; transition: clip-path 1.2s cubic-bezier(.7,0,.3,1); }
+
+    .reveal.visible, .reveal-clip.visible {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      clip-path: inset(0 0 0 0);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+    .delay-5 { transition-delay: .5s; }
+    .delay-6 { transition-delay: .6s; }
+    .delay-7 { transition-delay: .7s; }
+
+    /* legacy fade-up alias → reveal-up */
+    .fade-up { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(.2,.7,.2,1); }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ---------- Parallax ---------- */
+    /* Fixed-background parallax (simple, CSS-only) */
+    .parallax-fixed {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    @media (max-width: 768px) {
+      /* iOS Safari doesn't support fixed bg well — fallback */
+      .parallax-fixed { background-attachment: scroll; }
+    }
+
+    /* Transform-based parallax layers (driven by JS) */
+    .parallax-container { position: relative; overflow: hidden; }
+    .parallax-layer {
+      position: absolute;
+      inset: -15% 0;
+      width: 100%;
+      height: 130%;
+      will-change: transform;
+    }
+    .parallax-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Mouse-parallax (hero text layers) */
+    .mouse-layer { transition: transform .2s ease-out; will-change: transform; }
+
+    /* Floating sparkle elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .float-slow { animation: float 8s ease-in-out infinite; }
+    .float-medium { animation: float 6s ease-in-out infinite; }
+    .float-fast { animation: float 4s ease-in-out infinite; }
+
+    /* Zoom on scroll */
+    .scroll-zoom { will-change: transform; transition: transform .1s linear; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .parallax-layer, .mouse-layer, .float-slow, .float-medium, .float-fast, .scroll-zoom {
+        transform: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-cream text-ink">
+
+  <!-- ========== TOP BAR ========== -->
+  <div class="bg-ink text-cream text-xs tracking-widest uppercase">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+      <span class="hidden md:inline">Complimentary shipping on orders over $250</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-gold transition">Track Order</a>
+        <a href="#" class="hover:text-gold transition">Support</a>
+        <a href="#" class="hover:text-gold transition">EN / USD</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <nav class="hidden lg:flex gap-8 text-sm uppercase tracking-wider font-medium">
+        <a href="#" class="hover:text-gold transition">Shop</a>
+        <a href="#categories" class="hover:text-gold transition">Collections</a>
+        <a href="#products" class="hover:text-gold transition">New In</a>
+        <a href="#" class="hover:text-gold transition">Journal</a>
+      </nav>
+
+      <a href="#" class="font-display text-3xl md:text-4xl tracking-widest">Lumière</a>
+
+      <div class="flex items-center gap-5">
+        <button aria-label="Search" class="hover:text-gold transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button aria-label="Account" class="hover:text-gold transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </button>
+        <button aria-label="Wishlist" class="hover:text-gold transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </button>
+        <button aria-label="Cart" class="relative hover:text-gold transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="absolute -top-2 -right-2 bg-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO (multi-layer parallax) ========== -->
+  <section id="hero" class="relative h-[95vh] min-h-[620px] flex items-center parallax-container">
+    <!-- Background layer (slowest) -->
+    <div class="parallax-layer" data-parallax-speed="0.6">
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1800&q=80" alt=""/>
+    </div>
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/40 to-transparent z-10"></div>
+
+    <!-- Floating ornamental layer (mid speed) -->
+    <div class="absolute inset-0 z-20 pointer-events-none" data-parallax-speed="0.3">
+      <div class="absolute top-[15%] right-[10%] w-32 h-32 rounded-full border border-gold/30 float-slow"></div>
+      <div class="absolute top-[60%] right-[20%] w-20 h-20 rounded-full border border-gold/40 float-medium"></div>
+      <div class="absolute top-[30%] right-[30%] w-2 h-2 bg-gold rounded-full float-fast"></div>
+      <div class="absolute bottom-[20%] right-[12%] w-3 h-3 bg-gold/70 rounded-full float-slow"></div>
+    </div>
+
+    <!-- Text content (mouse-parallax) -->
+    <div class="relative z-30 max-w-7xl mx-auto px-6 text-cream" id="heroText">
+      <p class="uppercase tracking-[0.4em] text-xs md:text-sm mb-6 text-gold fade-up mouse-layer" data-mouse-depth="15">The Autumn Edit 2026</p>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-[1.05] max-w-2xl fade-up mouse-layer" data-mouse-depth="25">Timeless<br/><em class="italic text-gold">Elegance</em><br/>Reimagined</h1>
+      <p class="mt-8 max-w-lg text-lg text-cream/85 font-light fade-up mouse-layer" data-mouse-depth="10">Handcrafted fine jewelry made from ethically sourced gold and conflict-free diamonds. Each piece tells its own quiet story.</p>
+      <div class="mt-10 flex flex-wrap gap-4 fade-up mouse-layer" data-mouse-depth="8">
+        <a href="#products" class="inline-block bg-gold hover:bg-gold-dark text-white px-10 py-4 text-xs uppercase tracking-widest transition">Shop the Edit</a>
+        <a href="#categories" class="inline-block border border-cream hover:bg-cream hover:text-ink px-10 py-4 text-xs uppercase tracking-widest transition">Explore Collections</a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 right-8 hidden md:flex flex-col items-center text-cream/60 text-xs uppercase tracking-widest z-30">
+      <span>Scroll</span>
+      <div class="w-px h-16 bg-cream/40 mt-3 animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX BANNER #1 (fixed-bg, quote) ========== -->
+  <section class="relative h-[60vh] min-h-[420px] parallax-fixed flex items-center justify-center text-cream"
+           style="background-image: linear-gradient(rgba(26,26,26,.6), rgba(26,26,26,.6)), url('https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=1800&q=80');">
+    <div class="max-w-3xl mx-auto text-center px-6 reveal reveal-blur">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#b8935a" class="mx-auto mb-6 opacity-80"><path d="M7 11h4V7H7v4zm0 6h4v-4H7v4zm6 0h4v-4h-4v4zm0-10v4h4V7h-4z"/></svg>
+      <p class="font-display text-3xl md:text-5xl leading-snug italic font-light">"Jewelry is a very personal thing — it should tell a story about the person who is wearing it."</p>
+      <p class="mt-6 text-xs uppercase tracking-[0.4em] text-gold">— Our Founder, Elena Moretti</p>
+    </div>
+  </section>
+
+  <!-- ========== VALUES STRIP ========== -->
+  <section class="border-b border-ink/10 bg-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 px-6">
+      <div class="flex items-center gap-4 py-8 border-r border-ink/10 last:border-0 reveal reveal-up delay-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#b8935a" stroke-width="1.3" viewBox="0 0 24 24"><path d="M12 2 2 8l10 6 10-6-10-6Z"/><path d="M2 16l10 6 10-6"/><path d="M2 12l10 6 10-6"/></svg>
+        <div>
+          <p class="font-display text-lg">Ethical Sourcing</p>
+          <p class="text-xs text-muted">Recycled gold & fair trade</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 py-8 border-r border-ink/10 last:border-0 md:px-4 reveal reveal-up delay-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#b8935a" stroke-width="1.3" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        <div>
+          <p class="font-display text-lg">Lifetime Warranty</p>
+          <p class="text-xs text-muted">Free care & repair</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 py-8 border-r border-ink/10 last:border-0 md:px-4 reveal reveal-up delay-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#b8935a" stroke-width="1.3" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6Z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg>
+        <div>
+          <p class="font-display text-lg">Free Delivery</p>
+          <p class="text-xs text-muted">On orders over $250</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 py-8 reveal reveal-up delay-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#b8935a" stroke-width="1.3" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/><path d="M12 7v5l3 3"/></svg>
+        <div>
+          <p class="font-display text-lg">30-Day Returns</p>
+          <p class="text-xs text-muted">Hassle-free exchange</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORIES ========== -->
+  <section id="categories" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal reveal-up">
+        <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>Browse by category<span class="divider ml-3"></span></p>
+        <h2 class="font-display text-5xl md:text-6xl font-light">Shop Our Collections</h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="#" class="group relative overflow-hidden aspect-[3/4] reveal reveal-left delay-1">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80" alt="Rings" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
+          <div class="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+            <p class="font-display text-3xl">Rings</p>
+            <p class="text-xs uppercase tracking-widest mt-1 opacity-80">24 pieces</p>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden aspect-[3/4] reveal reveal-up delay-2">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80" alt="Necklaces" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
+          <div class="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+            <p class="font-display text-3xl">Necklaces</p>
+            <p class="text-xs uppercase tracking-widest mt-1 opacity-80">32 pieces</p>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden aspect-[3/4] reveal reveal-down delay-3">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80" alt="Earrings" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
+          <div class="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+            <p class="font-display text-3xl">Earrings</p>
+            <p class="text-xs uppercase tracking-widest mt-1 opacity-80">18 pieces</p>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden aspect-[3/4] reveal reveal-right delay-4">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80" alt="Bracelets" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
+          <div class="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+            <p class="font-display text-3xl">Bracelets</p>
+            <p class="text-xs uppercase tracking-widest mt-1 opacity-80">15 pieces</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCT GRID ========== -->
+  <section id="products" class="py-24 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal reveal-up">
+        <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>New arrivals<span class="divider ml-3"></span></p>
+        <h2 class="font-display text-5xl md:text-6xl font-light">Featured Pieces</h2>
+        <p class="text-muted mt-4 max-w-xl mx-auto">Discover our latest handcrafted designs, each meticulously made in our atelier.</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Product 1 -->
+        <div class="group reveal reveal-left delay-1">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <span class="absolute top-4 left-4 bg-gold text-white text-[10px] uppercase tracking-wider px-3 py-1">New</span>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Rings</p>
+          <h3 class="font-display text-xl mt-1">Celeste Solitaire</h3>
+          <p class="text-gold mt-1">$1,280</p>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="group reveal reveal-up delay-2">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <span class="absolute top-4 left-4 bg-ink text-cream text-[10px] uppercase tracking-wider px-3 py-1">-20%</span>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Necklaces</p>
+          <h3 class="font-display text-xl mt-1">Aurora Pendant</h3>
+          <p class="mt-1"><span class="text-gold">$640</span> <span class="text-muted line-through text-sm ml-1">$800</span></p>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="group reveal reveal-down delay-3">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1587467512961-120760940315?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Earrings</p>
+          <h3 class="font-display text-xl mt-1">Opaline Drops</h3>
+          <p class="text-gold mt-1">$420</p>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="group reveal reveal-right delay-4">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <span class="absolute top-4 left-4 bg-gold text-white text-[10px] uppercase tracking-wider px-3 py-1">New</span>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Bracelets</p>
+          <h3 class="font-display text-xl mt-1">Linnea Cuff</h3>
+          <p class="text-gold mt-1">$950</p>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="group reveal reveal-left delay-1">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1602752250015-52934bc45613?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Rings</p>
+          <h3 class="font-display text-xl mt-1">Vesper Band</h3>
+          <p class="text-gold mt-1">$780</p>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="group reveal reveal-scale delay-2">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <span class="absolute top-4 left-4 bg-ink text-cream text-[10px] uppercase tracking-wider px-3 py-1">Bestseller</span>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Necklaces</p>
+          <h3 class="font-display text-xl mt-1">Selene Chain</h3>
+          <p class="text-gold mt-1">$560</p>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="group reveal reveal-up delay-3">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Earrings</p>
+          <h3 class="font-display text-xl mt-1">Lyra Studs</h3>
+          <p class="text-gold mt-1">$310</p>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="group reveal reveal-right delay-4">
+          <div class="relative overflow-hidden bg-cream aspect-square mb-4">
+            <img src="https://images.unsplash.com/photo-1620656798932-902f1b8b94c7?w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+            <span class="absolute top-4 left-4 bg-gold text-white text-[10px] uppercase tracking-wider px-3 py-1">New</span>
+            <button class="absolute bottom-0 left-0 right-0 bg-ink text-cream py-3 text-xs uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition">Quick View</button>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted">Bracelets</p>
+          <h3 class="font-display text-xl mt-1">Isolde Chain</h3>
+          <p class="text-gold mt-1">$690</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <a href="#" class="inline-block border border-ink hover:bg-ink hover:text-cream px-12 py-4 text-xs uppercase tracking-widest transition">View All Jewelry</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STORY BANNER (transform parallax + side image) ========== -->
+  <section class="relative py-32 md:py-48 bg-ink text-cream parallax-container">
+    <!-- Deep parallax background -->
+    <div class="parallax-layer opacity-40" data-parallax-speed="0.7">
+      <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=1800&q=80" alt=""/>
+    </div>
+
+    <!-- Floating side image (opposite direction) -->
+    <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 right-10 w-80 h-96 z-20" data-parallax-speed="-0.5">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80" alt="" class="w-full h-full object-cover shadow-2xl"/>
+      <div class="absolute inset-0 border border-gold/40 translate-x-4 translate-y-4"></div>
+    </div>
+
+    <!-- Floating small image (other direction) -->
+    <div class="hidden lg:block absolute top-20 left-10 w-52 h-64 z-20" data-parallax-speed="0.5">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80" alt="" class="w-full h-full object-cover shadow-2xl"/>
+    </div>
+
+    <div class="relative max-w-3xl mx-auto text-center px-6 reveal reveal-scale z-30">
+      <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>Our craft<span class="divider ml-3"></span></p>
+      <h2 class="font-display text-4xl md:text-6xl font-light leading-tight mb-8">Crafted by hand.<br/><em class="italic text-gold">Worn for a lifetime.</em></h2>
+      <p class="text-cream/80 text-lg font-light max-w-xl mx-auto">From the first sketch to the final polish, every piece passes through the hands of our master artisans in Florence — refining a tradition three generations in the making.</p>
+      <a href="#" class="inline-block mt-10 border border-cream hover:bg-cream hover:text-ink px-10 py-4 text-xs uppercase tracking-widest transition">Discover Our Story</a>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX BANNER #2 (fixed-bg, stats) ========== -->
+  <section class="relative py-28 parallax-fixed text-cream"
+           style="background-image: linear-gradient(rgba(26,26,26,.7), rgba(26,26,26,.7)), url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1800&q=80');">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      <div class="reveal reveal-left delay-1">
+        <p class="font-display text-5xl md:text-6xl text-gold" data-counter="60">0</p>
+        <p class="text-xs uppercase tracking-widest mt-3">Years of Craft</p>
+      </div>
+      <div class="reveal reveal-up delay-2">
+        <p class="font-display text-5xl md:text-6xl text-gold" data-counter="120">0</p>
+        <p class="text-xs uppercase tracking-widest mt-3">Artisans</p>
+      </div>
+      <div class="reveal reveal-down delay-3">
+        <p class="font-display text-5xl md:text-6xl text-gold" data-counter="45">0</p>
+        <p class="text-xs uppercase tracking-widest mt-3">Countries Served</p>
+      </div>
+      <div class="reveal reveal-right delay-4">
+        <p class="font-display text-5xl md:text-6xl text-gold" data-counter="98">0</p>
+        <p class="text-xs uppercase tracking-widest mt-3">% Recycled Gold</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="py-24 md:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal reveal-up">
+        <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>Client voices<span class="divider ml-3"></span></p>
+        <h2 class="font-display text-5xl md:text-6xl font-light">What They're Saying</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-10 reveal reveal-left delay-1">
+          <div class="text-gold text-xl mb-4">★★★★★</div>
+          <p class="font-display text-xl leading-relaxed italic">"The craftsmanship is beyond anything I've owned before. My engagement ring is a dream — I still catch myself staring at it."</p>
+          <div class="mt-8 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cream overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="" class="w-full h-full object-cover"/>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Elena R.</p>
+              <p class="text-xs text-muted uppercase tracking-wider">Verified buyer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 reveal reveal-up delay-2">
+          <div class="text-gold text-xl mb-4">★★★★★</div>
+          <p class="font-display text-xl leading-relaxed italic">"I bought a necklace for my mother and the packaging alone made her cry. The piece itself was even more stunning in person."</p>
+          <div class="mt-8 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cream overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="" class="w-full h-full object-cover"/>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">James W.</p>
+              <p class="text-xs text-muted uppercase tracking-wider">Verified buyer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 reveal reveal-right delay-3">
+          <div class="text-gold text-xl mb-4">★★★★★</div>
+          <p class="font-display text-xl leading-relaxed italic">"Exceptional quality and service. Their lifetime warranty means I wear my earrings with total peace of mind, every day."</p>
+          <div class="mt-8 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cream overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="" class="w-full h-full object-cover"/>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Sofia K.</p>
+              <p class="text-xs text-muted uppercase tracking-wider">Verified buyer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTAGRAM / GALLERY ========== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-10 reveal reveal-up">
+      <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>@lumiere.jewelry<span class="divider ml-3"></span></p>
+      <h2 class="font-display text-4xl md:text-5xl font-light">Follow Us</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-1">
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-left delay-1"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-up delay-2"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-down delay-3"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-up delay-4"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-down delay-5"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+      <a href="#" class="block aspect-square overflow-hidden group reveal reveal-right delay-6"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt=""/></a>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER ========== -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-3xl mx-auto px-6 text-center reveal reveal-scale">
+      <p class="text-xs uppercase tracking-[0.4em] text-gold mb-4"><span class="divider mr-3"></span>Stay in touch<span class="divider ml-3"></span></p>
+      <h2 class="font-display text-4xl md:text-5xl font-light mb-4">Join the Circle</h2>
+      <p class="text-muted mb-10 max-w-lg mx-auto">Receive exclusive previews, private invitations, and 10% off your first order.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+        <input type="email" required placeholder="Your email address" class="flex-1 bg-white border border-ink/20 px-6 py-4 text-sm focus:outline-none focus:border-gold"/>
+        <button type="submit" class="bg-ink hover:bg-gold text-cream px-8 py-4 text-xs uppercase tracking-widest transition">Subscribe</button>
+      </form>
+      <p class="text-xs text-muted mt-4">By subscribing you agree to our privacy policy.</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-ink text-cream/80 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+      <div>
+        <p class="font-display text-3xl text-cream tracking-widest mb-5">Lumière</p>
+        <p class="text-sm leading-relaxed">Ethically crafted fine jewelry, made with love in Florence since 1962.</p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="w-9 h-9 border border-cream/30 rounded-full flex items-center justify-center hover:bg-gold hover:border-gold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2 0 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 2.2c-3.1 0-3.5 0-4.7.1-1.1 0-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1 0 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 6.6a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zm5.1-6.7a.9.9 0 1 1-1.9 0 .9.9 0 0 1 1.9 0z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 border border-cream/30 rounded-full flex items-center justify-center hover:bg-gold hover:border-gold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M22 5.8a8.5 8.5 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.3 8.3 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.8a4.1 4.1 0 0 0 1.3 5.5 4 4 0 0 1-1.8-.5v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8 0 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.8c7.6 0 11.7-6.3 11.7-11.7v-.5A8.4 8.4 0 0 0 22 5.8z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 border border-cream/30 rounded-full flex items-center justify-center hover:bg-gold hover:border-gold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c0-.8-.1-2 0-2.8l1.3-5.5s-.3-.7-.3-1.6c0-1.6.9-2.7 2-2.7 1 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1.1.6 2 1.6 2 2 0 3.5-2.1 3.5-5.1 0-2.7-1.9-4.5-4.7-4.5-3.2 0-5 2.4-5 4.8 0 1 .4 2 .8 2.6.1.1.1.2.1.3l-.3 1.3c0 .2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4 0-3.6 2.6-6.9 7.4-6.9 3.9 0 7 2.8 7 6.5 0 3.9-2.4 7-5.8 7-1.1 0-2.2-.6-2.6-1.3l-.7 2.7c-.3 1-1 2.2-1.4 2.9A10 10 0 1 0 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-lg text-cream mb-5">Shop</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-gold transition">New Arrivals</a></li>
+          <li><a href="#" class="hover:text-gold transition">Best Sellers</a></li>
+          <li><a href="#" class="hover:text-gold transition">Engagement</a></li>
+          <li><a href="#" class="hover:text-gold transition">Sale</a></li>
+          <li><a href="#" class="hover:text-gold transition">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg text-cream mb-5">Support</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-gold transition">Contact Us</a></li>
+          <li><a href="#" class="hover:text-gold transition">Shipping & Returns</a></li>
+          <li><a href="#" class="hover:text-gold transition">Ring Sizing</a></li>
+          <li><a href="#" class="hover:text-gold transition">Care Guide</a></li>
+          <li><a href="#" class="hover:text-gold transition">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg text-cream mb-5">Visit Us</h4>
+        <p class="text-sm leading-relaxed">Via dei Tornabuoni 23<br/>50123 Florence, Italy</p>
+        <p class="text-sm mt-3">hello@lumiere.com<br/>+39 055 123 4567</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between text-xs text-cream/60">
+      <p>© 2026 Lumière. All rights reserved.</p>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-gold transition">Privacy</a>
+        <a href="#" class="hover:text-gold transition">Terms</a>
+        <a href="#" class="hover:text-gold transition">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Reveal on scroll ----------
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-up, .reveal, .reveal-clip').forEach(el => io.observe(el));
+
+    // ---------- Scroll parallax (transform-based) ----------
+    const parallaxEls = document.querySelectorAll('[data-parallax-speed]');
+    let ticking = false;
+    function updateParallax() {
+      const vh = window.innerHeight;
+      parallaxEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        // only update when roughly in view
+        if (rect.bottom < -200 || rect.top > vh + 200) return;
+        const speed = parseFloat(el.dataset.parallaxSpeed);
+        // distance of section center from viewport center
+        const sectionCenter = rect.top + rect.height / 2;
+        const offset = (sectionCenter - vh / 2) * speed * -1;
+        el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+      });
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateParallax);
+    updateParallax();
+
+    // ---------- Mouse parallax (hero text) ----------
+    const hero = document.getElementById('hero');
+    const mouseLayers = hero ? hero.querySelectorAll('.mouse-layer') : [];
+    if (hero && mouseLayers.length) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 .. 0.5
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        mouseLayers.forEach(layer => {
+          const depth = parseFloat(layer.dataset.mouseDepth) || 10;
+          layer.style.transform = `translate(${(-x * depth).toFixed(1)}px, ${(-y * depth).toFixed(1)}px)`;
+        });
+      });
+      hero.addEventListener('mouseleave', () => {
+        mouseLayers.forEach(l => l.style.transform = '');
+      });
+    }
+
+    // ---------- Counter animation on stats ----------
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.counter, 10);
+        const duration = 1800;
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        counterIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-counter]').forEach(el => counterIO.observe(el));
+  </script>
+</body>
+</html>

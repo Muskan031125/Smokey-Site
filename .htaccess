@@ -1,0 +1,15 @@
+Options -Indexes
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Serve real files/dirs directly (css, images, etc inside public/)
+    RewriteCond %{REQUEST_URI} ^/public/
+    RewriteRule ^ - [L]
+
+    # Everything else → public/ subfolder
+    RewriteRule ^$ public/index.php [L]
+    RewriteRule ^(.+)$ public/$1 [L,QSA]
+</IfModule>
